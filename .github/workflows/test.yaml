@@ -52,5 +52,5 @@ jobs:
         run: ruff ./
       - name: test
         run: |
-          python manage.py test --settings=config.settings.test
+          python manage.py test --settings=config.settings.test --keepdb
         continue-on-error: false
