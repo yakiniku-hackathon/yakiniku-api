@@ -28,7 +28,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Check MySQL Version
-        run: echo 'select version();' | mysql -h 0.0.0.0 --port 3307 -u root -proot
+        run: echo 'select version();' | mysql -h 0.0.0.0 --port 3306 -u root -proot
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Set up Python 3.12.0
