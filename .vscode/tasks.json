@@ -26,7 +26,7 @@
             "label": "初期データの読み込み",
             "type": "shell",
             "windows": {
-                "command": "load_all_fixtures.bat"
+                "command": "load_all_fixtures"
             },
             "linux": {
                 "command": "./load_all_fixtures.sh"
