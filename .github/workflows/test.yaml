@@ -10,6 +10,8 @@ jobs:
   test:
     runs-on: ubuntu-20.04
     steps:
+      - name: Shutdown Ubuntu MySQL (SUDO)
+        run: sudo service mysql stop
       - name: Setup mysql-action
         uses: mirromutth/mysql-action@v1.1
         with:
