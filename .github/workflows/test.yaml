@@ -1,0 +1,57 @@
+name: Test
+
+on:   
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - stg
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    services:
+      db:
+        image: mysql:8.2.0
+        ports: 
+          - 3306:3306
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: test_yakiniku-hackathon
+          MYSQL_USER: user
+          MYSQL_PASSWORD: password
+          TZ: Asia/Tokyo
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+          --character-set-server=utf8mb4
+          --collation-server=utf8mb4_unicode_ci
+          --default-authentication-plugin=mysql_native_password
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Python 3.12.0
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.12.0
+      - name: Cache Python Dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/pip
+            !~/.cache/pip/log
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Python linter
+        run: ruff ./
+      - name: test
+        run: |
+          python manage.py test --settings=config.settings.test
+        continue-on-error: false
