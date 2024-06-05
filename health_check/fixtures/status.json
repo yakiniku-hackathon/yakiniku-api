@@ -1,0 +1,9 @@
+[
+    {
+        "model": "health_check.healthcheck",
+        "pk": 1,
+        "fields": {
+            "data": "OK"
+        }
+    }
+]

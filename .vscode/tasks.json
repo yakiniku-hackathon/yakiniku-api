@@ -1,0 +1,88 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "コードの整形",
+            "type": "shell",
+            "command": "ruff ./ --fix",
+            "args": [],
+            "problemMatcher": [],
+        },
+        {
+            "label": "マイグレーションファイルの作成",
+            "type": "shell",
+            "command": "python manage.py makemigrations",
+            "args": [],
+            "problemMatcher": [],
+        },
+        {
+            "label": "マイグレーションの実行",
+            "type": "shell",
+            "command": "python manage.py migrate",
+            "args": [],
+            "problemMatcher": [],
+        },
+        {
+            "label": "初期データの読み込み",
+            "type": "shell",
+            "windows": {
+                "command": "load_all_fixtures"
+            },
+            "linux": {
+                "command": "./load_all_fixtures.sh"
+            },
+            "osx": {
+                "command": "./load_all_fixtures.sh"
+            },
+            "args": [],
+            "problemMatcher": [],
+        },
+        {
+            "label": "新しいアプリケーションの作成",
+            "type": "shell",
+            "command": "django-admin startapp --template=custom_app_template ${input:app_name}",
+            "args": [],
+            "problemMatcher": [],
+        },
+        {
+            "label": "初期データの作成",
+            "type": "shell",
+            "command": "python -Xutf8 manage.py dumpdata ${input:app}.${input:model} --format=json --indent=4 > ${input:app}/fixtures/${input:file_name}.json",
+            "args": [],
+            "problemMatcher": [],
+        },
+        {
+            "label": "テストの実行",
+            "type": "shell",
+            "command": "python manage.py test --keepdb",
+            "args": [],
+            "problemMatcher": [],
+        },
+    ],
+    "inputs": [
+        {
+            "type": "promptString",
+            "id": "app_name",
+            "description": "新しいアプリケーションの名前を入力してください。(英数字)",
+            "default": ""
+        },
+        {
+            "type": "promptString",
+            "id": "app",
+            "description": "初期データを作成したいアプリケーションの名前を入力してください。",
+            "default": ""
+        },
+        {
+            "type": "promptString",
+            "id": "model",
+            "description": "モデルの名前を入力してください。",
+            "default": ""
+        },
+        {
+            "type": "promptString",
+            "id": "file_name",
+            "description": "ファイル名をを入力してください。",
+            "default": ""
+        },
+    ]
+}
