@@ -21,11 +21,14 @@ jobs:
           MYSQL_PASSWORD: password
           TZ: Asia/Tokyo
         options: >-
-          --health-cmd="mysqladmin ping -h localhost"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=5
+          --health-cmd="mysqladmin ping -h 127.0.0.1"
+          --health-interval=20s
+          --health-timeout=10s
+          --health-retries=10
     steps:
+      - uses: actions/checkout@v2
+      - name: Check MySQL Version
+        run: echo 'select version();' | mysql -h 0.0.0.0 --port 3307 -u root -proot
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Set up Python 3.12.0
@@ -47,16 +50,6 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Python linter
         run: ruff ./
-      - name: Wait for MySQL to be ready
-        run: |
-          for i in {1..30}; do
-            if mysqladmin ping -h localhost --silent; then
-              echo "MySQL is up and running"
-              break
-            fi
-            echo "Waiting for MySQL..."
-            sleep 5
-          done
       - name: test
         run: |
           python manage.py test --settings=config.settings.test
