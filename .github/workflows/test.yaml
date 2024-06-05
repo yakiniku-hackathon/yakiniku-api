@@ -50,12 +50,12 @@ jobs:
       - name: Wait for MySQL to be ready
         run: |
           for i in {1..30}; do
-            if mysqladmin ping -h db --silent; then
+            if mysqladmin ping -h localhost --silent; then
               echo "MySQL is up and running"
               break
             fi
             echo "Waiting for MySQL..."
-            sleep 1
+            sleep 5
           done
       - name: test
         run: |
