@@ -1,0 +1,5 @@
+k8s
+
+**/*.log
+**/__pycache__
+.ruff_cache
