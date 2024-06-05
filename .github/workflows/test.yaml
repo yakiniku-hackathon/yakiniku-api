@@ -9,21 +9,23 @@ on:
 jobs:
   test:
     runs-on: ubuntu-20.04
+    services:
+      db:
+        image: mysql:8.2.0
+        ports: 
+          - 3306:3306
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: test_yakiniku-hackathon
+          MYSQL_USER: user
+          MYSQL_PASSWORD: password
+          TZ: Asia/Tokyo
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
     steps:
-      - name: Shutdown Ubuntu MySQL (SUDO)
-        run: sudo service mysql stop
-      - name: Setup mysql-action
-        uses: mirromutth/mysql-action@v1.1
-        with:
-          host port: 3306 
-          container port: 3306 
-          character set server: 'utf8' 
-          collation server: 'utf8_general_ci' 
-          mysql version: '8.2.0' 
-          mysql database: 'test_yakiniku-hackathon' 
-          mysql root password: 'root'
-          mysql user: 'user'
-          mysql password: 'password'
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Set up Python 3.12.0

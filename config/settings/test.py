@@ -21,10 +21,13 @@ CORS_ALLOWED_ORIGINS = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'yakiniku-hackathon',
+        'NAME': 'test_yakiniku-hackathon',
         'USER': 'user',
         'PASSWORD': 'password',
         'HOST': 'localhost',
         'PORT': '3306',
+        'TEST': {
+            'NAME': 'test_yakiniku-hackathon',
+        }
     }
 }
