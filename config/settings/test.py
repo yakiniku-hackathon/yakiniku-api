@@ -24,7 +24,7 @@ DATABASES = {
         'NAME': 'yakiniku-hackathon',
         'USER': 'user',
         'PASSWORD': 'password',
-        'HOST': 'localhost',
+        'HOST': '0.0.0.0',
         'PORT': '3306',
         'TEST': {
             'NAME': 'test_yakiniku-hackathon',
