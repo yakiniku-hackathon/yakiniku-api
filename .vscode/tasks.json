@@ -50,6 +50,27 @@
             "args": [],
             "problemMatcher": [],
         },
+        {
+            "label": "Dockerの起動",
+            "type": "shell",
+            "command": "docker compose up -d",
+            "args": [],
+            "problemMatcher": [],
+        },
+        {
+            "label": "Dockerの停止",
+            "type": "shell",
+            "command": "docker compose down",
+            "args": [],
+            "problemMatcher": [],
+        },
+        {
+            "label": "Dockerの完全削除",
+            "type": "shell",
+            "command": "docker compose down --rmi all -v",
+            "args": [],
+            "problemMatcher": [],
+        },
     ],
     "inputs": [
         {
