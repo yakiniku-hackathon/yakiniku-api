@@ -8,7 +8,7 @@ services:
     restart: always
     environment:
       - ENVIRONMENT=development
-    entrypoint: ./dev_start.sh
+    entrypoint: bash dev_start.sh
     ports:
       - 8000:8000
     healthcheck:
