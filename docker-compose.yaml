@@ -1,5 +1,25 @@
 version: "3"
 services:
+  api:
+    container_name: api
+    image: ghcr.io/yakiniku-hackathon/dev/yakiniku-api:latest
+    volumes: 
+      - ./:/app/
+    restart: always
+    environment:
+      - ENVIRONMENT=development
+    entrypoint: ./dev_start.sh
+    ports:
+      - 8000:8000
+    healthcheck:
+      test: "curl -f http://localhost:8000/health_check/ready || exit 1"
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 60s
+    depends_on:
+      db:
+        condition: service_healthy
   db:
     container_name: mysql
     image: mysql:8.2.0
