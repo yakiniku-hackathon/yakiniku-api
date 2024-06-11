@@ -1,5 +1,5 @@
 # ビルドステージ
-FROM --platform=linux/amd64 python:3.12.0-slim-bullseye as builder
+FROM python:3.12.0-slim-bullseye as builder
 
 # 作業ディレクトリの設定
 WORKDIR /build
@@ -8,7 +8,7 @@ COPY requirements.txt /build/
 
 # 必要なパッケージのインストール
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends gcc build-essential && \
+    apt-get install -y --no-install-recommends gcc default-libmysqlclient-dev pkg-config build-essential  && \
     rm -rf /var/lib/apt/lists/*
 
 # pipをアップグレードし、依存関係をインストール
@@ -16,14 +16,14 @@ RUN pip install --upgrade pip setuptools wheel && \
     pip wheel --no-cache-dir --wheel-dir=/root/wheels -r requirements.txt
 
 # 実行ステージ
-FROM --platform=linux/arm/v7 python:3.12.0-slim-bullseye
+FROM python:3.12.0-slim-bullseye
 
 # 作業ディレクトリの設定
 WORKDIR /app
 
 # ロケールの設定
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends locales && \
+    apt-get install -y --no-install-recommends locales libmariadb3 libmariadb-dev curl && \
     localedef -f UTF-8 -i ja_JP ja_JP.UTF-8 && \
     rm -rf /var/lib/apt/lists/*
 
@@ -40,6 +40,6 @@ COPY --from=builder /build/requirements.txt .
 RUN pip install --no-cache /root/wheels/*
 
 # copyのコードをコピー
-
+COPY ./ /app/
 
 CMD ["python3"]
