@@ -2,8 +2,6 @@ on:
   push:
     branches:
       - main
-      - ARH4_deploy-stg-prod
-  workflow_dispatch:
     
 
 name: Docker Build and Push
