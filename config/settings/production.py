@@ -15,7 +15,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
+    "https://hysb00142305-default-enxross.dev.8thwall.app/",
 ]
 
 # Database
