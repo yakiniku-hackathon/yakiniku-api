@@ -14,8 +14,14 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
+CORS_ORIGIN_REGEX_WHITELIST = [
+    r"https://hysb00142305-[\w-]+-enxross.dev.8thwall.app",
+]
+
+CORS_ALLOW_HEADERS = [
+    'content-type',
+    'authorization',
+    'access-control-allow-origin',
 ]
 
 # Database
