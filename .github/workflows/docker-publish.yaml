@@ -41,7 +41,7 @@ jobs:
           tags: |
             ghcr.io/${{ env.ORG_NAME_LOWER }}/prod/yakiniku-api:latest
             ghcr.io/${{ env.ORG_NAME_LOWER }}/prod/yakiniku-api:${{ env.TAG_NAME }}
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
 
   publish_docker_image_nginx:
     runs-on: ubuntu-latest
@@ -76,4 +76,4 @@ jobs:
           tags: |
             ghcr.io/${{ env.ORG_NAME_LOWER }}/prod/yakiniku-nginx:latest
             ghcr.io/${{ env.ORG_NAME_LOWER }}/prod/yakiniku-nginx:${{ env.TAG_NAME }}
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
