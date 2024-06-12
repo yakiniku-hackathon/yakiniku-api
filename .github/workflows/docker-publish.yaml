@@ -2,7 +2,6 @@ on:
   push:
     branches:
       - main
-      - ARH25_cors-settings
     
 
 name: Docker Build and Push
