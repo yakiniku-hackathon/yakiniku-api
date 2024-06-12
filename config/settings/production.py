@@ -14,7 +14,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
-CORS_ALLOWED_ORIGINS = [
+CORS_ORIGIN_REGEX_WHITELIST = [
     r"https://hysb00142305-[\w-]+-enxross.dev.8thwall.app",
 ]
 
