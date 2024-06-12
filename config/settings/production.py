@@ -18,6 +18,12 @@ CORS_ALLOWED_ORIGINS = [
     "https://hysb00142305-default-enxross.dev.8thwall.app",
 ]
 
+CORS_ALLOW_HEADERS = [
+    'content-type',
+    'authorization',
+    'access-control-allow-origin',
+]
+
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
