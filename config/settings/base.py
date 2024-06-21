@@ -33,7 +33,8 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'import_export',
     'users.apps.UsersConfig',
-    'health_check.apps.HealthCheckConfig'
+    'health_check.apps.HealthCheckConfig',
+    'mystery.apps.MysteryConfig',
 ]
 
 STATIC_URL = '/static/'
