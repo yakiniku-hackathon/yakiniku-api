@@ -31,7 +31,7 @@ def get_mystery(request, mystery_id):
     
 @api_view(['POST'])
 def post_mystery(request):
-    mystery = request.data.dict()
+    mystery = request.data.copy()
     logger.debug('user_id:{}による新規謎解きの追加'.format(request.user.id))
     mystery['user'] = request.user.id
     mystery['status'] = 0
@@ -65,7 +65,7 @@ def get_questions(request, mystery_id):
 
 @api_view(['POST'])
 def post_question(request, mystery_id):
-    question = request.data.dict()
+    question = request.data.copy()
     logger.debug('user_id:{}による新規謎解きの追加'.format(request.user.id))
     question['user'] = request.user.id
     question['mystery'] = mystery_id
