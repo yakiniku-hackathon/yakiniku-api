@@ -1,2 +1,16 @@
+from rest_framework import serializers
 
-# Create your serializers here.
+from .models import Mystery, Question
+
+
+class MysterySerializers(serializers.ModelSerializer):
+
+    class Meta:
+        model = Mystery
+        fields = '__all__'
+
+class QuestionSerializers(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Question
+        fields = '__all__'

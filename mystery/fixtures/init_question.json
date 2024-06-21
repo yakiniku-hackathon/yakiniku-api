@@ -1,0 +1,19 @@
+[
+{
+    "model": "mystery.question",
+    "pk": 1,
+    "fields": {
+        "title": "問題のタイトル",
+        "description": "問題文",
+        "hint": "ヒントだよー！",
+        "user": 1,
+        "mystery": 1,
+        "correct_assets": null,
+        "incorrect_assets": null,
+        "correct_msg": null,
+        "incorrect_msg": null,
+        "created_at": "2024-06-21T08:12:57.712Z",
+        "updated_at": "2024-06-21T08:25:42.784Z"
+    }
+}
+]
