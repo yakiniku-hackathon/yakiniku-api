@@ -4,13 +4,13 @@
         "pk": 1,
         "fields": {
             "password": "pbkdf2_sha256$720000$kPg9FFpIBHzYeRZuHPEBU9$KKsnBJ6R2pFXD2yEUExvhexFRaaevQeWldBCWUAbnqo=",
-            "last_login": "2024-01-02T18:57:33.381",
+            "last_login": "2024-06-21T08:25:42.784Z",
             "is_superuser": true,
             "username": "Admin",
             "email": "Admin@dev.com",
             "is_staff": true,
             "is_active": true,
-            "date_joined": "2024-01-02T18:54:26.201",
+            "date_joined": "2024-06-21T08:25:42.784Z",
             "groups": [],
             "user_permissions": []
         }
