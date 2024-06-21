@@ -18,10 +18,10 @@ class Mystery(models.Model):
     status = models.IntegerField(verbose_name='ステータス', choices=STATUS_CHOICE)
     mystery = models.TextField(verbose_name='問題文の番号', null=True , blank=True)
     complete_msg = models.TextField(verbose_name='完了メッセージ', null=True , blank=True)
-    complete_count = models.IntegerField(verbose_name='謎解きをクリアされた回数')
+    complete_count = models.IntegerField(verbose_name='謎解きをクリアされた回数', default=0)
     created_at = models.DateTimeField(verbose_name='作成日時', auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='更新日時', auto_now=True)
-    published_at = models.DateTimeField(verbose_name='公開日時')
+    published_at = models.DateTimeField(verbose_name='公開日時', null=True , blank=True)
 
     def __str__(self, ):
         return '【{}】{}'.format(self.status, self.title)

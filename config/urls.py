@@ -19,9 +19,10 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('health_check/', include('health_check.urls')),
+    path('api/v1/', include('health_check.urls')),
+    path('api/v1/', include('mystery.urls')),
     path('api/auth/', include('djoser.urls')),
     path('api/auth/', include('djoser.urls.jwt')),
-    path('api/users', include('users.urls')),
+    path('api/users/', include('users.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
 ]
