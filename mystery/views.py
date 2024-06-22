@@ -19,6 +19,13 @@ def get_mysteries(request):
         return Response(serializers.data, status=status.HTTP_200_OK)
     
 @api_view(['GET'])
+def get_my_mysteries(request):
+    if request.method == 'GET':
+        mysteries = Mystery.objects.filter(user=request.user.id)
+        serializers = MysterySerializers(mysteries, many=True)
+        return Response(serializers.data, status=status.HTTP_200_OK)
+    
+@api_view(['GET'])
 @permission_classes([AllowAny])
 def get_mystery(request, mystery_id):
     if request.method == 'GET':
