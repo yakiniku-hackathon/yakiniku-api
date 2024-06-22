@@ -1,10 +1,11 @@
 from django.urls import path
 
-from .views import get_mysteries, get_mystery, get_question, get_questions, patch_mystery, patch_question, post_mystery, post_question
+from .views import get_my_mysteries, get_mysteries, get_mystery, get_question, get_questions, patch_mystery, patch_question, post_mystery, post_question
 
 urlpatterns = [
     path("mystery", post_mystery, name="post_mystery"),
     path("mystery/", get_mysteries, name="get_mysteries"),
+    path("mystery/me", get_my_mysteries, name="get_my_mysteries"),
     path("mystery/<int:mystery_id>", patch_mystery, name="patch_mystery"),
     path("mystery/<int:mystery_id>/", get_mystery, name="get_mystery"),
     path("mystery/<int:mystery_id>/question", post_question, name="post_question"),

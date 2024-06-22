@@ -23,6 +23,12 @@ class AuthorizationMysteryTestCase(APITestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), 1)
+
+    def test_get_my_mysteries(self):
+        url = reverse('get_my_mysteries')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data), 0)
     
     def test_get_mystery(self):
         url = reverse('get_mystery', kwargs={'mystery_id': 1})
@@ -60,7 +66,6 @@ class AuthorizationMysteryTestCase(APITestCase):
         response = self.client.patch(url, data)
 
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
-        
 
 class MysteryTestCase(APITestCase):
     
@@ -72,6 +77,11 @@ class MysteryTestCase(APITestCase):
         
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), 1)
+
+    def test_get_my_mysteries(self):
+        url = reverse('get_my_mysteries')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
     def test_get_mystery(self):
         url = reverse('get_mystery', kwargs={'mystery_id': 1})

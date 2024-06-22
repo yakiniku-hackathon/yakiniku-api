@@ -49,7 +49,7 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Python linter
-        run: ruff ./
+        run: ruff check ./
       - name: test
         run: |
           python manage.py test --settings=config.settings.test --keepdb
