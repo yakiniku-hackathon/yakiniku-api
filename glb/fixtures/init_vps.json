@@ -1,0 +1,13 @@
+[
+{
+    "model": "glb.vps",
+    "pk": 1,
+    "fields": {
+        "vps_name": "vps_development",
+        "title": "VPS検証用",
+        "file_name": "vps_development",
+        "created_at": "2024-06-23T21:52:26Z",
+        "updated_at": "2024-06-23T21:52:26Z"
+    }
+}
+]
