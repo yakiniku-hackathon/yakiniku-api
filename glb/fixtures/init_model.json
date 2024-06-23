@@ -1,0 +1,12 @@
+[
+{
+    "model": "glb.model",
+    "pk": 1,
+    "fields": {
+        "title": "Model検証用",
+        "file_name": "model_development",
+        "created_at": "2024-06-23T21:54:44Z",
+        "updated_at": "2024-06-23T21:54:44Z"
+    }
+}
+]
