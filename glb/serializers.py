@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Vps, Model
+from .models import Model, Vps
 
 
 class VpsSerializers(serializers.ModelSerializer):
