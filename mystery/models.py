@@ -1,6 +1,15 @@
+import os
+import uuid
+
 from django.db import models
 
 from users.models import User
+
+
+def upload_to(instance, filename):
+    ext = filename.split('.')[-1]
+    new_filename = f"{uuid.uuid4()}.{ext}"
+    return os.path.join('images/', new_filename)
 
 
 class Mystery(models.Model):
@@ -14,7 +23,7 @@ class Mystery(models.Model):
     id = models.AutoField(verbose_name='項番', primary_key=True)
     title = models.CharField(verbose_name='謎解きのタイトル', max_length=255)
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='ユーザーID')
-    image = models.TextField(verbose_name='謎解きのサムネイル', null=True , blank=True)
+    image = models.ImageField(upload_to=upload_to, verbose_name='謎解きのサムネイル', null=True , blank=True)
     status = models.IntegerField(verbose_name='ステータス', choices=STATUS_CHOICE)
     mystery = models.TextField(verbose_name='問題文の番号', null=True , blank=True)
     complete_msg = models.TextField(verbose_name='完了メッセージ', null=True , blank=True)
@@ -43,5 +52,3 @@ class Question(models.Model):
     
     def __str__(self, ):
         return '{}'.format(self.title)
-
-
