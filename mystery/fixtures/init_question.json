@@ -8,10 +8,11 @@
         "hint": "ヒントだよー！",
         "user": 1,
         "mystery": 1,
-        "correct_assets": null,
-        "incorrect_assets": null,
         "correct_msg": null,
-        "incorrect_msg": null,
+        "correct_vps": null,
+        "correct_model": null,
+        "correct_vps_attributes": null,
+        "correct_model_attributes": null,
         "created_at": "2024-06-21T08:12:57.712Z",
         "updated_at": "2024-06-21T08:25:42.784Z"
     }
