@@ -54,3 +54,12 @@ class Question(models.Model):
     
     def __str__(self, ):
         return '{}'.format(self.title)
+    
+class UserMysteryStatus(models.Model):
+    id = models.AutoField(verbose_name='項番', primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='ユーザーID')
+    mystery = models.ForeignKey(Mystery, on_delete=models.CASCADE, verbose_name='謎解きID')
+    status = models.TextField(verbose_name='ユーザの謎解きのステータス', null=True, blank=True)
+
+    def __str__(self, ):
+        return '{}, {}'.format(self.user, self.mystery)

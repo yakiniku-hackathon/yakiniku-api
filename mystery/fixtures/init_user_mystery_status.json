@@ -1,0 +1,11 @@
+[
+{
+    "model": "mystery.usermysterystatus",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "mystery": 1,
+        "status": "[1]"
+    }
+}
+]
