@@ -185,3 +185,38 @@ class QuestionTestCase(APITestCase):
         data = {"hint": "ヒント用メッセージだよー"}
         response = self.client.patch(url, data)
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+class UserMysteryStatusTestCase(APITestCase):
+
+    fixtures = ['init_mystery.json', 'init_question.json', 'init_user_mystery_status.json', 'admin.json']
+
+    def setUp(self):
+        self.user = User.objects.create_user(email='testuser@test.com', username='testuser', password='testpassword')
+        refresh = RefreshToken.for_user(self.user)
+        self.client.credentials(HTTP_AUTHORIZATION='JWT ' + str(refresh.access_token))
+
+    def test_get_user_mysteries_status(self, ):
+        url = reverse('get_user_mysteries_status')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(response.data), 0)
+
+    def test_get_user_mystery_status(self, ):
+        url = reverse('get_user_mystery_status', kwargs={'status_id': 1})
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_post_user_mystery_status(self, ):
+        url = reverse('post_user_mystery_status')
+        response = self.client.post(url, {
+            "mystery": 1,
+            "status": "[]"
+        })
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+    def test_patch_user_mystery_status(self, ):
+        url = reverse('patch_user_mystery_status', kwargs={'status_id': 1})
+        response = self.client.patch(url, {
+            "status": "[1]"
+        })
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
