@@ -46,6 +46,7 @@ class Question(models.Model):
     correct_msg = models.TextField(verbose_name='正解時のメッセージ', null=True, blank=True)
     correct_vps = models.TextField(verbose_name='正解時のVPS', null=True, blank=True)
     correct_model = models.TextField(verbose_name='正解時に出現するモデル', null=True, blank=True)
+    correct_msg_attributes = models.TextField(verbose_name='正解時のメッセージのattribute', null=True, blank=True)
     correct_vps_attributes = models.TextField(verbose_name='正解時のVPSのattribute', null=True, blank=True)
     correct_model_attributes = models.TextField(verbose_name='正解時に出現するモデルのattributes', null=True, blank=True)
     created_at = models.DateTimeField(verbose_name='作成日時', auto_now_add=True)
