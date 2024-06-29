@@ -35,7 +35,8 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'health_check.apps.HealthCheckConfig',
     'mystery.apps.MysteryConfig',
-    'glb.apps.GlbConfig'
+    'glb.apps.GlbConfig',
+    'external_api.apps.ExternalApiConfig',
 ]
 
 STATIC_URL = '/static/'
