@@ -24,6 +24,7 @@ urlpatterns = [
     path('api/v1/', include('health_check.urls')),
     path('api/v1/', include('mystery.urls')),
     path('api/v1/', include('glb.urls')),
+    path('api/v1/', include('external_api.urls')),
     path('api/auth/', include('djoser.urls')),
     path('api/auth/', include('djoser.urls.jwt')),
     path('api/users/', include('users.urls')),
